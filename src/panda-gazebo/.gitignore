@@ -1,0 +1,34 @@
+# Logs and data
+logs/*
+*.pnpm-error.log
+*.pnpm-debug.log
+*.log
+
+# Docs
+_autosummary/
+
+# Cache
+__pycache__/
+*.pyc
+slprj/
+matlab_msg_gen_ros1/
+
+# Tests
+pytest/
+*.pytest_cache/
+.coverage
+pytest-coverage.txt
+
+# Dist
+build/
+dist/
+.eggs/
+*.egg-info/
+
+# Node
+node_modules
+
+# IDE
+.vscode
+*.code-workspace
+compile_commands.json
