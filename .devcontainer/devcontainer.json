@@ -1,0 +1,29 @@
+{
+  "name": "noetic desktop",
+  "dockerFile": "Dockerfile",
+  "runArgs": [
+    "--network=host",
+    "--cap-add=SYS_PTRACE",
+		"--security-opt=seccomp:unconfined",
+		"--security-opt=apparmor:unconfined",
+		"--volume=/run/desktop/mnt/host/wslg/.X11-unix:/tmp/.X11-unix",
+		"--volume=/run/desktop/mnt/host/wslg:/mnt/wslg",
+		"--ipc=host",
+		// uncomment to use NVIDIA GPU
+		"--gpus=all"
+		// uncomment to use intel iGPU (Linux)
+		// "--device=/dev/dri"
+  ],
+  "containerEnv": {
+		"DISPLAY": ":0", // Needed for GUI try ":0" for windows
+		"WAYLAND_DISPLAY": "wayland-0",
+		"XDG_RUNTIME_DIR": "/mnt/wslg/runtime-dir",
+		"PULSE_SERVER": "/mnt/wslg/runtime-dir",
+		"LIBGL_ALWAYS_SOFTWARE": "1" // Needed for software rendering of opengl
+	},
+  "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
+  "workspaceFolder": "/${localWorkspaceFolderBasename}",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/vscode/.bash_history,type=bind"
+  ]
+}
