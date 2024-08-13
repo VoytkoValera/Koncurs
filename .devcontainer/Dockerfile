@@ -29,8 +29,6 @@ RUN sudo apt install -y git ros-noetic-gazebo-ros-pkgs python3-catkin-tools  pyt
 # Rosdep update
 RUN rosdep update
 
-RUN rosdep install --from-paths src --ignore-src -r -y
-
 # Source the ROS setup file
 RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
 
